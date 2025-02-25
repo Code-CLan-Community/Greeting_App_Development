@@ -24,5 +24,4 @@ public class GreetingService {
         }
         return new Greeting(1L, message);
     }
-
 }

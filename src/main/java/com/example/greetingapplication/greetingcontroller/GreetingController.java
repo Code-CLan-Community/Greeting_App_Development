@@ -35,7 +35,6 @@ public class GreetingController {
         return new Greeting(3L, "Hello from DELETE Method");
     }
 
-
     //UC - 2 Create Simple Greeting
     @Autowired
     private GreetingService greetingService;

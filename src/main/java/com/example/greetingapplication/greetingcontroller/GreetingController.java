@@ -44,4 +44,10 @@ public class GreetingController {
         return greetingService.getSimpleGreeting();
     }
 
+    //uc3 create a greeting
+    @PostMapping("/create")
+    public Greeting createGreeting(@RequestParam(required = false) String firstName,
+                                   @RequestParam(required = false) String lastName) {
+        return greetingService.createGreeting(firstName, lastName);
+    }
 }

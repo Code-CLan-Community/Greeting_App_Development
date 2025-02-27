@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    //UC1 Create Basic HTTP Requests
+    // UC1 Create Basic HTTP Requests
 
     // GET Request - Simple Greeting
     @GetMapping("/hello")
@@ -37,8 +37,7 @@ public class GreetingController {
         return new Greeting(3L, "Hello from DELETE Method");
     }
 
-
-    //UC - 2 Create Simple Greeting
+    // UC2 Create Simple Greeting
     @Autowired
     private GreetingService greetingService;
 
@@ -52,36 +51,35 @@ public class GreetingController {
                                    @RequestParam(required = false) String lastName) {
         return greetingService.createGreeting(firstName, lastName);
     }
-    
-    //uc4 Save Greeting Message
+
+    // UC4 Save Greeting Message
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {
         return greetingService.saveGreeting(greeting);
     }
 
-    //uc 5 Find by ID
+    // UC5 Find Greeting by ID
     @GetMapping("/{id}")
     public Greeting getGreetingById(@PathVariable Long id) {
         return greetingService.findGreetingById(id);
     }
 
-    //UC6 Display Message
+    // UC6 Display All Greetings
     @GetMapping("/list")
     public List<Greeting> listAllGreetings() {
         return greetingService.listAllGreetings();
     }
 
-    //UC7 Update Greeting Message
+    // UC7 Update Greeting Message
     @PutMapping("/edit/{id}")
     public Greeting editGreeting(@PathVariable Long id, @RequestParam String message) {
         return greetingService.editGreeting(id, message);
     }
 
-    // UC8 Delete a greeting message
+    // UC8 Delete a Greeting Message
     @DeleteMapping("/delete/{id}")
     public String deleteGreeting(@PathVariable Long id) {
         boolean deleted = greetingService.deleteGreeting(id);
         return deleted ? "Greeting Deleted Successfully" : "Greeting Not Found";
     }
-
 }

@@ -26,7 +26,7 @@ public class GreetingService {
         return new Greeting(1L, message);
     }
 
-    //uc4 cREATE A REPOSITORY
+    // UC4 - Create a repository
     @Autowired
     private GreetingRepository greetingRepository;
 
@@ -34,8 +34,8 @@ public class GreetingService {
         return greetingRepository.save(greeting);
     }
 
+    // UC5 - Find Greeting by ID
     public Greeting findGreetingById(Long id) {
         return greetingRepository.findById(id).orElse(null);
     }
-
 }

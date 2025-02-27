@@ -1,7 +1,17 @@
 package com.example.greetingapplication.greetingmodel;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity  // Marks this class as a JPA entity
 public class Greeting {
+
+    @Id  // Marks this field as the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-increment ID
     private Long id;
+    
     private String message;
 
     // Constructors

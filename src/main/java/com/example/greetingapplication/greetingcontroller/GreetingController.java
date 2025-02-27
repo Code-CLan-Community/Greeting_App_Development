@@ -44,17 +44,21 @@ public class GreetingController {
         return greetingService.getSimpleGreeting();
     }
 
-
     @PostMapping("/create")
     public Greeting createGreeting(@RequestParam(required = false) String firstName,
                                    @RequestParam(required = false) String lastName) {
         return greetingService.createGreeting(firstName, lastName);
     }
 
-    //uc4 Save Greeting Message
+    //UC4 Save Greeting Message
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {
         return greetingService.saveGreeting(greeting);
     }
 
+    //UC5 Find Greeting by ID
+    @GetMapping("/{id}")
+    public Greeting getGreetingById(@PathVariable Long id) {
+        return greetingService.findGreetingById(id);
+    }
 }

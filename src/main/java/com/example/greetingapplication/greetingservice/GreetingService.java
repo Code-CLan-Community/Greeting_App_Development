@@ -1,6 +1,8 @@
 package com.example.greetingapplication.greetingservice;
 
 import com.example.greetingapplication.greetingmodel.Greeting;
+import com.example.greetingapplication.greetingrepository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,7 +11,6 @@ public class GreetingService {
     public Greeting getSimpleGreeting() {
         return new Greeting(0L, "Hello World");
     }
-
 
     public Greeting createGreeting(String firstName, String lastName) {
         String message = "Hello";
@@ -25,7 +26,7 @@ public class GreetingService {
         return new Greeting(1L, message);
     }
 
-    //uc4 cREATE A REPOSITORY
+    // UC4 - Create a repository
     @Autowired
     private GreetingRepository greetingRepository;
 
@@ -33,5 +34,8 @@ public class GreetingService {
         return greetingRepository.save(greeting);
     }
 
-
+    // UC5 - Find Greeting by ID
+    public Greeting findGreetingById(Long id) {
+        return greetingRepository.findById(id).orElse(null);
+    }
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
 
-
 @Service
 public class GreetingService {
 
@@ -29,26 +28,27 @@ public class GreetingService {
         return new Greeting(1L, message);
     }
 
-    //uc4 cREATE A REPOSITORY
+    // UC4 - Create a repository
     @Autowired
     private GreetingRepository greetingRepository;
 
     public Greeting saveGreeting(Greeting greeting) {
         return greetingRepository.save(greeting);
     }
-    //uc5
+
+    // UC5 - Find Greeting by ID
     public Greeting findGreetingById(Long id) {
         return greetingRepository.findById(id).orElse(null);
     }
 
-    //UC-6 Disply Greeting Message
+    // UC6 - Display All Greetings
     public List<Greeting> listAllGreetings() {
         List<Greeting> greetings = new ArrayList<>();
         greetingRepository.findAll().forEach(greetings::add);
         return greetings;
     }
 
-    //UC7 Update Greeting Message
+    // UC7 - Update Greeting Message
     public Greeting editGreeting(Long id, String newMessage) {
         Greeting greeting = greetingRepository.findById(id).orElse(null);
         if (greeting != null) {
@@ -57,6 +57,4 @@ public class GreetingService {
         }
         return null;
     }
-
-
 }

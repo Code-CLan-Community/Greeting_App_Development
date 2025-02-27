@@ -10,7 +10,7 @@ public class GreetingService {
         return new Greeting(0L, "Hello World");
     }
 
-    //uc3 create greeting message
+
     public Greeting createGreeting(String firstName, String lastName) {
         String message = "Hello";
         if (firstName != null && !firstName.isEmpty()) {
@@ -24,4 +24,14 @@ public class GreetingService {
         }
         return new Greeting(1L, message);
     }
+
+    //uc4 cREATE A REPOSITORY
+    @Autowired
+    private GreetingRepository greetingRepository;
+
+    public Greeting saveGreeting(Greeting greeting) {
+        return greetingRepository.save(greeting);
+    }
+
+
 }

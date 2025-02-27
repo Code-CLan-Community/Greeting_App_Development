@@ -10,6 +10,7 @@ public class GreetingService {
         return new Greeting(0L, "Hello World");
     }
 
+
     public Greeting createGreeting(String firstName, String lastName) {
         String message = "Hello";
         if (firstName != null && !firstName.isEmpty()) {
@@ -31,5 +32,6 @@ public class GreetingService {
     public Greeting saveGreeting(Greeting greeting) {
         return greetingRepository.save(greeting);
     }
+
 
 }

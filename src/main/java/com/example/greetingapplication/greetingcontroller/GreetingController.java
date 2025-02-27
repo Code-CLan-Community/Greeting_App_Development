@@ -35,7 +35,6 @@ public class GreetingController {
         return new Greeting(3L, "Hello from DELETE Method");
     }
 
-
     //UC - 2 Create Simple Greeting
     @Autowired
     private GreetingService greetingService;
@@ -45,12 +44,13 @@ public class GreetingController {
         return greetingService.getSimpleGreeting();
     }
 
+
     @PostMapping("/create")
     public Greeting createGreeting(@RequestParam(required = false) String firstName,
                                    @RequestParam(required = false) String lastName) {
         return greetingService.createGreeting(firstName, lastName);
     }
-    
+
     //uc4 Save Greeting Message
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {

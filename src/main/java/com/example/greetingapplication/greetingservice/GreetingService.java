@@ -47,4 +47,14 @@ public class GreetingService {
         greetingRepository.findAll().forEach(greetings::add);
         return greetings;
     }
+
+    // UC7 - Update Greeting Message
+    public Greeting editGreeting(Long id, String newMessage) {
+        Greeting greeting = greetingRepository.findById(id).orElse(null);
+        if (greeting != null) {
+            greeting.setMessage(newMessage);
+            return greetingRepository.save(greeting);
+        }
+        return null;
+    }
 }

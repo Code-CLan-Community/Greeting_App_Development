@@ -75,4 +75,11 @@ public class GreetingController {
     public Greeting editGreeting(@PathVariable Long id, @RequestParam String message) {
         return greetingService.editGreeting(id, message);
     }
+
+    // UC8 Delete a Greeting Message
+    @DeleteMapping("/delete/{id}")
+    public String deleteGreeting(@PathVariable Long id) {
+        boolean deleted = greetingService.deleteGreeting(id);
+        return deleted ? "Greeting Deleted Successfully" : "Greeting Not Found";
+    }
 }

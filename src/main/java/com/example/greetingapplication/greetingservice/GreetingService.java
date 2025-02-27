@@ -28,7 +28,6 @@ public class GreetingService {
         return new Greeting(1L, message);
     }
 
-    // UC4 - Create a repository
     @Autowired
     private GreetingRepository greetingRepository;
 
@@ -36,19 +35,16 @@ public class GreetingService {
         return greetingRepository.save(greeting);
     }
 
-    // UC5 - Find Greeting by ID
     public Greeting findGreetingById(Long id) {
         return greetingRepository.findById(id).orElse(null);
     }
 
-    // UC6 - Display All Greetings
     public List<Greeting> listAllGreetings() {
         List<Greeting> greetings = new ArrayList<>();
         greetingRepository.findAll().forEach(greetings::add);
         return greetings;
     }
 
-    // UC7 - Update Greeting Message
     public Greeting editGreeting(Long id, String newMessage) {
         Greeting greeting = greetingRepository.findById(id).orElse(null);
         if (greeting != null) {
@@ -56,5 +52,13 @@ public class GreetingService {
             return greetingRepository.save(greeting);
         }
         return null;
+    }
+
+    public boolean deleteGreeting(Long id) {
+        if (greetingRepository.existsById(id)) {
+            greetingRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

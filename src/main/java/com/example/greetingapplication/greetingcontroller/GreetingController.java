@@ -5,11 +5,13 @@ import com.example.greetingapplication.greetingservice.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    //UC1 Create Basic HTTP Requests
+    // UC1 Create Basic HTTP Requests
 
     // GET Request - Simple Greeting
     @GetMapping("/hello")
@@ -35,7 +37,7 @@ public class GreetingController {
         return new Greeting(3L, "Hello from DELETE Method");
     }
 
-    //UC - 2 Create Simple Greeting
+    // UC2 Create Simple Greeting
     @Autowired
     private GreetingService greetingService;
 
@@ -50,15 +52,21 @@ public class GreetingController {
         return greetingService.createGreeting(firstName, lastName);
     }
 
-    //UC4 Save Greeting Message
+    // UC4 Save Greeting Message
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {
         return greetingService.saveGreeting(greeting);
     }
 
-    //UC5 Find Greeting by ID
+    // UC5 Find Greeting by ID
     @GetMapping("/{id}")
     public Greeting getGreetingById(@PathVariable Long id) {
         return greetingService.findGreetingById(id);
+    }
+
+    // UC6 Display All Greetings
+    @GetMapping("/list")
+    public List<Greeting> listAllGreetings() {
+        return greetingService.listAllGreetings();
     }
 }

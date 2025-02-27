@@ -11,7 +11,7 @@ public class Greeting {
     @Id  // Marks this field as the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-increment ID
     private Long id;
-    
+
     private String message;
 
     // Constructors

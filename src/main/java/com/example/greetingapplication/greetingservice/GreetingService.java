@@ -4,6 +4,8 @@ import com.example.greetingapplication.greetingmodel.Greeting;
 import com.example.greetingapplication.greetingrepository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class GreetingService {
@@ -37,5 +39,12 @@ public class GreetingService {
     // UC5 - Find Greeting by ID
     public Greeting findGreetingById(Long id) {
         return greetingRepository.findById(id).orElse(null);
+    }
+
+    // UC6 - Display All Greetings
+    public List<Greeting> listAllGreetings() {
+        List<Greeting> greetings = new ArrayList<>();
+        greetingRepository.findAll().forEach(greetings::add);
+        return greetings;
     }
 }
